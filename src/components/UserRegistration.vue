@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1> User Registration</h1>
-    <form @submit.prevent="submitForm">
+    <form @submit="submitForm">
       <input
         type="text"
         v-model="user.firstname"
@@ -46,12 +46,12 @@ export default {
         address: "",
         phone: "",
       },
-      videoFile: null,
+      videoPath: null,
     };
   },
   methods: {
     onFileChange(e) {
-      this.videoFile = e.target.files[0];
+      this.videoPath = e.target.files[0];
     },
     async submitForm() {
       const formData = new FormData();
@@ -60,17 +60,25 @@ export default {
       formData.append("email", this.user.email);
       formData.append("phone", this.user.phone);
       formData.append("address", this.user.address);
-      formData.append("video", this.videoFile);
+      formData.append("video", this.videoPath);
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
 
       try {
-        const response = await axios.post("/register", formData);
-        if (response.data.success) {
-          this.$router.push("/payment");
-        } else {
-          alert("Registration failed");
-        }
-      } catch (error) {
-        alert("Error during registration");
+            const response = await axios.post('http://localhost:3000/api/register', formData);
+            console.log(response.data);
+        
+            if (response.data.success) {
+              this.$router.push("/payment");
+            } else {
+              alert("Registration failed");
+            }
+          }
+          catch (error)
+          {
+            console.log(error);
+            alert(error.response ? error.response.data.message :"Error during registration");
       }
     },
   },

@@ -4,9 +4,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 //const bcrypt = require('bcryptjs');
-const UserRoutes = require('../your-project-name/src/routes/user.routes'); 
+//const UserRoutes = require('../your-project-name/src/routes/user.routes'); 
+const UserRoutes = require('./routes/user.routes');
 
-const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -28,17 +28,7 @@ const mongoDBUri = 'mongodb+srv://lisaedidiong:Lisa%402023@cluster0.cc6idnu.mong
   db.on('error', console.error.bind(console, 'MongoDB connection error:'));
   
 
-// Multer for video file
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now());
-  }
-});
 
-const upload = multer({ storage: storage });
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -54,7 +44,11 @@ app.get('/api/db-status', (req, res) => {
 });
 app.use('/api', UserRoutes)
 
-
+app.use((req,res,next) =>{
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Header', '*');
+  next();
+})
 
 // Registration endpoint
 
