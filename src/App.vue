@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <Registration />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Registration from "./components/UserRegistration.vue";
+
 
 
 export default {
   name: "App",
-  components: {
-    Registration,
-  },
+ 
 };
 </script>
 

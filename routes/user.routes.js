@@ -31,6 +31,13 @@ app.use((req, res, next) => {
   });
 });
 
+const fs = require('fs');
+const uploadDir = './uploads';
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 
 const multer = require('multer');
 
