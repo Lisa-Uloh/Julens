@@ -10,6 +10,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 // Vue.use(VueRouter);
 
 const routes = [
+  { path: '/', redirect: '/register' },
   {
     path: '/register',
     name: 'Registration',

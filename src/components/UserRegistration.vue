@@ -1,5 +1,76 @@
 <template>
-  <div>
+  <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">Register</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" @submit.prevent="submitForm">
+                        <div class="form-row">
+                            <div class="name">First name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" v-model="user.firstname" placeholder="First Name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Last name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" v-model="user.lastname" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Email address</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="email" v-model="user.email" placeholder="Email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Phone Number</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text"
+        v-model="user.phone"
+        placeholder="Phone Number"
+        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Address</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text"
+        v-model="user.address"
+        placeholder="Address"
+        required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="name">Upload CV</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input type="file" @change="onFileChange" required>
+                                    <!-- <label class="label--file" for="file">Choose file</label> -->
+                                    <!-- <span class="input-file__info">No file chosen</span> -->
+                                </div>
+                                <!-- <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div> -->
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
+                </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+  <!-- <div>
     <h1> User Registration</h1>
     <form @submit.prevent="submitForm">
       <input
@@ -30,7 +101,7 @@
       <input type="file" @change="onFileChange" required />
       <button type="submit">Sign Up</button>
     </form>
-  </div>
+  </div> -->
 </template>
   
   <script>

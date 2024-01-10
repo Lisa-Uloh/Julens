@@ -1,7 +1,11 @@
 <template>
     <div>
       <h1>Payment Page</h1>
-      <button @click="makePayment">Pay with Paystack</button>
+      <div class="card card-6">
+        <button class="btn btn--radius-2 btn--blue-2" @click="makePayment">Make Payment</button>
+      </div>
+      <!-- <button @click="makePayment">Pay with Paystack</button> -->
+      
     </div>
   </template>
   
